@@ -1,0 +1,23 @@
+.buttons{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+}
+
+.buttons button{
+    height: 25px;
+    width: 60px;
+    border: none;
+    background-color: crimson;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
