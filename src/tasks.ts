@@ -99,37 +99,42 @@ class TaskManager{
         // Delete Btn Feature
         button.addEventListener('click', ()=>{
 
-            const tasksInMem = localStorage.getItem('tasks')
-            let parsedTasks: Task[]
-            let taskID
+            if (confirm("Are you sure you want to delete this task")){
+                const tasksInMem = localStorage.getItem('tasks')
+                let parsedTasks: Task[]
+                let taskID
 
 
-            if (tasksInMem === null || tasksInMem === ''){
-                alert("Error, Cannot Read Database")
-                return
-            }
+                if (tasksInMem === null || tasksInMem === ''){
+                    alert("Error, Cannot Read Database")
+                    return
+                }
 
-            parsedTasks = JSON.parse(tasksInMem!)
-        
-            if (parsedTasks.length === 0){
-                alert("Database Empty")
-                return
-            }
+                parsedTasks = JSON.parse(tasksInMem!)
+                
+                if (parsedTasks.length === 0){
+                    alert("Database Empty")
+                    return
+                }
 
-            taskID = parsedTasks.findIndex(item => item.id === Number(button.id))
+                taskID = parsedTasks.findIndex(item => item.id === Number(button.id))
 
-            if (taskID === -1){
-                alert("Task Not Found")
-                return
-            }
+                if (taskID === -1){
+                    alert("Task Not Found")
+                    return
+                }
 
-            parsedTasks.splice(taskID, 1)
+                parsedTasks.splice(taskID, 1)
 
-            this.tasksHolder.splice(taskID, 1)
+                this.tasksHolder.splice(taskID, 1)
 
             
-            localStorage.setItem('tasks', JSON.stringify(parsedTasks))
-            listElement.remove()
+                localStorage.setItem('tasks', JSON.stringify(parsedTasks))
+                listElement.remove()
+            }
+            else{
+                return
+            }
 
        })
     }
